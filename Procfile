@@ -1,1 +1,1 @@
-web: npm cache clean --force && npm install --omit=dev && npm start
+web: pnpm cache clean --force && pnpm install --omit=dev && pnpm start
