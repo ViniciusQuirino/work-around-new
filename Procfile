@@ -1,1 +1,0 @@
-web: pnpm cache clean --force && pnpm install --omit=dev && pnpm start
