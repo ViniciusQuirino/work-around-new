@@ -1,1 +1,1 @@
-web: npm i && npm start
+web: npm cache clean --force && npm i && npm start
