@@ -61,7 +61,7 @@ client.on("message", async (msg) => {
 
 const job = new CronJob("*/5 * * * *", async () => {
     try {
-      const response = await axios.get("https://db-php.onrender.com/products");
+      const response = await axios.get("https://php-rbj2.onrender.com/products");
   
       console.log("DEU CERTO");
       // console.log(response.data);
@@ -73,7 +73,7 @@ const job = new CronJob("*/5 * * * *", async () => {
   const jobWhats = new CronJob("*/5 * * * *", async () => {
     try {
       const response = await axios.post(
-        "https://work-around.onrender.com/send-message",
+        "https://work-around-igk7.onrender.com/send-message",
         { message: "Hello", number: "5514998536591@c.us" }
       );
   
