@@ -8,6 +8,7 @@ const fs = require("fs");
 const { phoneNumberFormatter } = require("./helpers/formatter");
 const fileUpload = require("express-fileupload");
 const axios = require("axios");
+const CronJob = require("cron").CronJob;
 
 const client = new Client({
     authStrategy: new LocalAuth(),
