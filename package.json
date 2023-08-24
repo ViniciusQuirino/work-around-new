@@ -33,6 +33,7 @@
     "dependencies": {
         "@pedroslopez/moduleraid": "^5.0.2",
         "axios": "1.3.4",
+        "cron": "^2.4.1",
         "express": "4.18.2",
         "express-fileupload": "1.2.0",
         "express-validator": "6.9.2",

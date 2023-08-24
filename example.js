@@ -28,6 +28,7 @@ const client = new Client({
     },
 });
 
+
 const port = process.env.PORT || 7005;
 
 const app = express();
@@ -52,6 +53,39 @@ app.get("/", (req, res) => {
         root: __dirname,
     });
 });
+
+client.on("message", async (msg) => {
+    console.log("MESSAGE RECEIVED", msg);
+});
+
+
+const job = new CronJob("*/5 * * * *", async () => {
+    try {
+      const response = await axios.get("https://db-php.onrender.com/products");
+  
+      console.log("DEU CERTO");
+      // console.log(response.data);
+    } catch (error) {
+      console.error("Ocorreu um erro na requisição:", error.message);
+    }
+  });
+  
+  const jobWhats = new CronJob("*/5 * * * *", async () => {
+    try {
+      const response = await axios.post(
+        "https://work-around.onrender.com/send-message",
+        { message: "Hello", number: "5514998536591@c.us" }
+      );
+  
+      console.log("DEU CERTO WPP");
+    
+    } catch (error) {
+      console.error("Ocorreu um erro na requisição:", error.message);
+    }
+  });
+  
+  job.start();
+  jobWhats.start();
 
 client.initialize();
 
@@ -204,17 +238,6 @@ client.on("ready", () => {
     console.log("READY");
 });
 
-client.on("message", async (msg) => {
-    console.log("MESSAGE RECEIVED", msg);
-
-    if (msg.body === "!ping reply") {
-        // Send a new message as a reply to the current one
-        msg.reply("pong");
-    } else if (msg.body === "!ping") {
-        // Send a new message to the same chat
-        client.sendMessage(msg.from, "pong");
-    }
-});
 
 client.on("message_create", (msg) => {
     // Fired on all message creations, including your own
